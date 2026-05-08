@@ -1,0 +1,826 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="town_qr_world">
+
+    <physics name="default_physics" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <plugin filename="gz-sim-physics-system"
+            name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system"
+            name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system"
+            name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-sensors-system"
+            name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    
+    <plugin filename="gz-sim-imu-system"
+            name="gz::sim::systems::Imu"/>
+<plugin
+  filename="gz-sim-pose-publisher-system"
+  name="gz::sim::systems::PosePublisher">
+
+  <publish_link_pose>true</publish_link_pose>
+  <publish_sensor_pose>true</publish_sensor_pose>
+  <publish_nested_model_pose>true</publish_nested_model_pose>
+
+  <!-- CRITICAL -->
+  <use_pose_vector_msg>false</use_pose_vector_msg>
+
+</plugin>
+    <light name="sun" type="directional">
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>80 80</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>80 80</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.45 0.45 0.45 1</ambient>
+            <diffuse>0.45 0.45 0.45 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- <model name="main_road">
+      <static>true</static>
+      <pose>0 0 0.01 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>70 6 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.05 0.05 0.05 1</ambient>
+            <diffuse>0.05 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model> -->
+<!-- 
+    <model name="cross_road">
+      <static>true</static>
+      <pose>0 0 0.02 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>6 70 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.05 0.05 0.05 1</ambient>
+            <diffuse>0.05 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model> -->
+
+    <model name="pharmacy">
+      <static>true</static>
+      <pose>-20 12 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>6 6 3</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>6 6 3</size></box></geometry>
+          <material>
+            <ambient>0.8 1.0 0.8 1</ambient>
+            <diffuse>0.8 1.0 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="firefighting_center">
+      <static>true</static>
+      <pose>-8 12 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>7 6 3</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>7 6 3</size></box></geometry>
+          <material>
+            <ambient>1.0 0.2 0.2 1</ambient>
+            <diffuse>1.0 0.2 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="supermarket">
+      <static>true</static>
+      <pose>8 12 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>8 6 3</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>8 6 3</size></box></geometry>
+          <material>
+            <ambient>0.2 0.4 1.0 1</ambient>
+            <diffuse>0.2 0.4 1.0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="restaurant">
+      <static>true</static>
+      <pose>22 12 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>6 6 3</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>6 6 3</size></box></geometry>
+          <material>
+            <ambient>1.0 0.7 0.2 1</ambient>
+            <diffuse>1.0 0.7 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="house_1">
+      <static>true</static>
+      <pose>-24 -12 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>5 5 3</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>5 5 3</size></box></geometry>
+          <material>
+            <ambient>0.7 0.5 0.3 1</ambient>
+            <diffuse>0.7 0.5 0.3 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="house_2">
+      <static>true</static>
+      <pose>-12 -12 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>5 5 3</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>5 5 3</size></box></geometry>
+          <material>
+            <ambient>0.7 0.5 0.3 1</ambient>
+            <diffuse>0.7 0.5 0.3 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="house_3">
+      <static>true</static>
+      <pose>0 -12 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>5 5 3</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>5 5 3</size></box></geometry>
+          <material>
+            <ambient>0.7 0.5 0.3 1</ambient>
+            <diffuse>0.7 0.5 0.3 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="house_4">
+      <static>true</static>
+      <pose>12 -12 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>5 5 3</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>5 5 3</size></box></geometry>
+          <material>
+            <ambient>0.7 0.5 0.3 1</ambient>
+            <diffuse>0.7 0.5 0.3 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="house_5">
+      <static>true</static>
+      <pose>24 -12 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>5 5 3</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>5 5 3</size></box></geometry>
+          <material>
+            <ambient>0.7 0.5 0.3 1</ambient>
+            <diffuse>0.7 0.5 0.3 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="docking_station">
+      <static>true</static>
+      <pose>0 -28 0.3 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>5 3 0.6</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>5 3 0.6</size></box></geometry>
+          <material>
+            <ambient>0.1 1.0 1.0 1</ambient>
+            <diffuse>0.1 1.0 1.0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- QR signs -->
+    <model name="qr_pharmacy">
+      <static>true</static>
+      <pose>-20 8.9 1.6 0 0 0</pose>
+      <link name="link">
+        <visual name="qr_visual">
+          <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/pharmacy.png</albedo_map></metal></pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qr_firefighting_center">
+      <static>true</static>
+      <pose>-8 8.9 1.6 0 0 0</pose>
+      <link name="link">
+        <visual name="qr_visual">
+          <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/fire_center.png</albedo_map></metal></pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qr_supermarket">
+      <static>true</static>
+      <pose>8 8.9 1.6 0 0 0</pose>
+      <link name="link">
+        <visual name="qr_visual">
+          <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/supermarket.png</albedo_map></metal></pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qr_restaurant">
+      <static>true</static>
+      <pose>22 8.9 1.6 0 0 0</pose>
+      <link name="link">
+        <visual name="qr_visual">
+          <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/restaurant.png</albedo_map></metal></pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qr_house_1">
+      <static>true</static>
+      <pose>-24 -9.4 1.6 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="qr_visual">
+          <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_1.png</albedo_map></metal></pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qr_house_2">
+      <static>true</static>
+      <pose>-12 -9.4 1.6 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="qr_visual">
+          <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_2.png</albedo_map></metal></pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qr_house_3">
+      <static>true</static>
+      <pose>0 -9.4 1.6 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="qr_visual">
+          <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_3.png</albedo_map></metal></pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qr_house_4">
+      <static>true</static>
+      <pose>12 -9.4 1.6 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="qr_visual">
+          <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_4.png</albedo_map></metal></pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qr_house_5">
+      <static>true</static>
+      <pose>24 -9.4 1.6 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="qr_visual">
+          <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_5.png</albedo_map></metal></pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qr_docking_station">
+      <static>true</static>
+      <pose>0 -26.2 1.0 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="qr_visual">
+          <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/docking_station.png</albedo_map></metal></pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Robot -->
+    <model name="vehicle_blue" canonical_link="chassis">
+      <pose>0 0 0 0 0 0</pose>
+
+      <frame name="lidar_frame" attached_to="chassis">
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+
+      <link name="chassis">
+        <pose relative_to="__model__">0 0 0.4 0 0 0</pose>
+
+        <inertial>
+          <mass>1.14395</mass>
+          <inertia>
+            <ixx>0.095329</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.381317</iyy>
+            <iyz>0</iyz>
+            <izz>0.476646</izz>
+          </inertia>
+        </inertial>
+
+        <visual name="visual">
+          <geometry><box><size>2.0 1.0 0.5</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+
+        <collision name="collision">
+          <geometry><box><size>2.0 1.0 0.4</size></box></geometry>
+        </collision>
+        <sensor name="gpu_lidar" type="gpu_lidar">
+          <pose>0 0 0.5 0 0 0</pose>
+          <topic>scan</topic>
+
+          <update_rate>10</update_rate>
+          <ray>                          
+          <scan>
+          <horizontal>
+            <samples>640</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+            </horizontal>
+          <vertical>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </vertical>
+        </scan>
+          <range>
+          <min>0.1</min>               <!-- ← was 0.08, must be ≥ 0.1 for OGRE -->
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+          </range>
+        </ray>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+      </sensor>
+        <sensor name="imu_sensor" type="imu">
+          <always_on>true</always_on>
+          <update_rate>50</update_rate>
+          <visualize>true</visualize>
+          <topic>imu</topic>
+        </sensor>
+
+<sensor name="front_cam" type="camera">
+  <!-- x y z roll pitch yaw -->
+  <pose>0.8 0 0.5 0 0 0</pose>
+
+  <topic>front_cam/image</topic>
+  <always_on>true</always_on>
+  <update_rate>30</update_rate>
+  <visualize>true</visualize>
+
+  <camera>
+    <horizontal_fov>1.05</horizontal_fov>
+    <image>
+      <width>640</width>
+      <height>480</height>
+      <format>R8G8B8</format>
+    </image>
+    <clip>
+      <near>0.1</near>
+      <far>50</far>
+    </clip>
+  </camera>
+</sensor>
+      </link>
+
+      <link name="left_wheel">
+        <pose relative_to="chassis">-0.5 0.6 0 -1.5707 0 0</pose>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.043333</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.043333</iyy>
+            <iyz>0</iyz>
+            <izz>0.08</izz>
+          </inertia>
+        </inertial>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+        </collision>
+      </link>
+
+      <link name="right_wheel">
+        <pose relative_to="chassis">-0.5 -0.6 0 -1.5707 0 0</pose>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.043333</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.043333</iyy>
+            <iyz>0</iyz>
+            <izz>0.08</izz>
+          </inertia>
+        </inertial>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+        </collision>
+      </link>
+
+      <frame name="caster_frame" attached_to="chassis">
+        <pose>0.8 0 -0.2 0 0 0</pose>
+      </frame>
+
+      <link name="caster">
+        <pose relative_to="caster_frame">0 0 0 0 0 0</pose>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.016</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.016</iyy>
+            <iyz>0</iyz>
+            <izz>0.016</izz>
+          </inertia>
+        </inertial>
+        <visual name="visual">
+          <geometry><sphere><radius>0.2</radius></sphere></geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry><sphere><radius>0.2</radius></sphere></geometry>
+        </collision>
+      </link>
+      <joint name="left_wheel_joint" type="revolute">
+        <parent>chassis</parent>
+        <child>left_wheel</child>
+        <axis>
+          <xyz expressed_in="__model__">0 1 0</xyz>
+          <limit>
+            <lower>-1.79769e+308</lower>
+            <upper>1.79769e+308</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="right_wheel_joint" type="revolute">
+        <parent>chassis</parent>
+        <child>right_wheel</child>
+        <axis>
+          <xyz expressed_in="__model__">0 1 0</xyz>
+          <limit>
+            <lower>-1.79769e+308</lower>
+            <upper>1.79769e+308</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="caster_wheel" type="ball">
+        <parent>chassis</parent>
+        <child>caster</child>
+      </joint>
+
+
+
+      <plugin filename="gz-sim-diff-drive-system"
+              name="gz::sim::systems::DiffDrive">
+        <left_joint>left_wheel_joint</left_joint>
+        <right_joint>right_wheel_joint</right_joint>
+        <wheel_separation>1.2</wheel_separation>
+        <wheel_radius>0.4</wheel_radius>
+        <odom_publish_frequency>10</odom_publish_frequency>
+        <topic>cmd_vel</topic>
+        <odom_topic>odom</odom_topic>
+        <frame_id>odom</frame_id>
+        <child_frame_id>vehicle_blue/chassis</child_frame_id>
+      </plugin>
+
+    </model>
+<!-- ========== LABEL SIGNS ========== -->
+
+<model name="label_pharmacy">
+  <static>true</static>
+  <pose>-20 12 4.5 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><box><size>2.0 0.05 1.0</size></box></geometry>
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <pbr>
+          <metal>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_pharmacy.png</albedo_map>
+          </metal>
+        </pbr>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<model name="label_firefighting_center">
+  <static>true</static>
+  <pose>-8 12 4.5 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><box><size>2.5 0.05 1.0</size></box></geometry>
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <pbr>
+          <metal>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_firefighting_center.png</albedo_map>
+          </metal>
+        </pbr>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<model name="label_supermarket">
+  <static>true</static>
+  <pose>8 12 4.5 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><box><size>2.5 0.05 1.0</size></box></geometry>
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <pbr>
+          <metal>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_supermarket.png</albedo_map>
+          </metal>
+        </pbr>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<model name="label_restaurant">
+  <static>true</static>
+  <pose>22 12 4.5 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><box><size>2.5 0.05 1.0</size></box></geometry>
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <pbr>
+          <metal>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_restaurant.png</albedo_map>
+          </metal>
+        </pbr>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<!-- Houses -->
+<model name="label_house_1">
+  <static>true</static>
+  <pose>-24 -12 4.0 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><box><size>1.8 0.05 0.8</size></box></geometry>
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <pbr>
+          <metal>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_1.png</albedo_map>
+          </metal>
+        </pbr>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<model name="label_house_2">
+  <static>true</static>
+  <pose>-12 -12 4.0 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><box><size>1.8 0.05 0.8</size></box></geometry>
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <pbr>
+          <metal>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_2.png</albedo_map>
+          </metal>
+        </pbr>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<model name="label_house_3">
+  <static>true</static>
+  <pose>0 -12 4.0 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><box><size>1.8 0.05 0.8</size></box></geometry>
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <pbr>
+          <metal>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_3.png</albedo_map>
+          </metal>
+        </pbr>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<model name="label_house_4">
+  <static>true</static>
+  <pose>12 -12 4.0 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><box><size>1.8 0.05 0.8</size></box></geometry>
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <pbr>
+          <metal>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_4.png</albedo_map>
+          </metal>
+        </pbr>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<model name="label_house_5">
+  <static>true</static>
+  <pose>24 -12 4.0 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><box><size>1.8 0.05 0.8</size></box></geometry>
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <pbr>
+          <metal>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_5.png</albedo_map>
+          </metal>
+        </pbr>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<model name="label_docking_station">
+  <static>true</static>
+  <pose>0 -28 1.5 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><box><size>1.8 0.05 0.8</size></box></geometry>
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <pbr>
+          <metal>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_docking_station.png</albedo_map>
+          </metal>
+        </pbr>
+      </material>
+    </visual>
+  </link>
+</model>
+  </world>
+</sdf>
