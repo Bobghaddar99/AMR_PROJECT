@@ -21,10 +21,13 @@ ros2 run ros_gz_bridge parameter_bridge \
 
 ros2 launch nav2_bringup navigation_launch.py use_sim_time:=True params_file:=nav_y.yaml
 
-ros2 launch nav2_bringup rviz_launch.py
+ros2 launch nav2_bringup rviz_launch.py use_sim_time:=true
 
 
- ros2 launch nav2_bringup localization_launch.py   map:=my_maze.yaml   params_file:=nav_y.yaml 
+ros2 launch nav2_bringup localization_launch.py \
+  map:=/home/ibrahim/Desktop/AMR_project/adam_map/adam_map.yaml \
+  params_file:=/home/ibrahim/Desktop/AMR_project/nav_y.yaml \
+  use_sim_time:=true
 
 
 
@@ -48,15 +51,18 @@ ros2 run tf2_ros static_transform_publisher 0 0 0.5 0 0 0 vehicle_blue/chassis v
 
 
 ros2 launch nav2_bringup localization_launch.py \
-  map:=/home/ibrahim/Desktop/Exam_3/my_map.yaml \
-  params_file:=/home/ibrahim/Desktop/Exam_3/nav2_params.yaml \
+  map:=/home/ibrahim/Desktop/AMR_project/adam_map/adam_map.yaml \
+  params_file:=/home/ibrahim/Desktop/AMR_project/nav_y.yaml \
   use_sim_time:=true
+
 
 
 # Combined bridge for Town_and_robot.sdf
 ros2 run ros_gz_bridge parameter_bridge \
   /clock@rosgraph_msgs/msg/Clock@gz.msgs.Clock \
   /cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist \
+  /traffic_bot_1/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist \
+  /traffic_bot_2/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist \
   /odom@nav_msgs/msg/Odometry@gz.msgs.Odometry \
   /model/vehicle_blue/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V \
   /world/town_qr_world/model/vehicle_blue/joint_state@sensor_msgs/msg/JointState@gz.msgs.Model \
@@ -68,3 +74,6 @@ ros2 run ros_gz_bridge parameter_bridge \
   --ros-args \
   -r /model/vehicle_blue/tf:=/tf \
   -r /world/town_qr_world/model/vehicle_blue/joint_state:=/joint_states
+
+# Back-and-forth traffic robots controller
+python3 /home/ibrahim/Desktop/AMR_project/traffic_robots_controller.py

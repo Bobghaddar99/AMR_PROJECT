@@ -329,7 +329,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/pharmacy.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/pharmacy.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -344,7 +344,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/fire_center.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/fire_center.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -359,7 +359,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/supermarket.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/supermarket.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -374,7 +374,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/restaurant.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/restaurant.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -389,7 +389,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_1.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_1.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -404,7 +404,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_2.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_2.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -419,7 +419,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_3.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_3.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -434,7 +434,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_4.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_4.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -449,7 +449,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_5.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_5.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -457,14 +457,14 @@
 
     <model name="qr_docking_station">
       <static>true</static>
-      <pose>-27.5 8.9 1.0 0 0 0</pose>
+      <pose>-27.5 8.9 1.6 0 0 0</pose>
       <link name="link">
         <visual name="qr_visual">
-          <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
+          <geometry><box><size>1.4 0.05 1.4</size></box></geometry>
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/docking_station.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/docking_station.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -694,6 +694,308 @@
       </plugin>
 
     </model>
+
+    <!-- Dynamic traffic robot 1 -->
+    <model name="traffic_bot_1" canonical_link="chassis">
+      <pose>-6 0 0 0 0 0</pose>
+
+      <link name="chassis">
+        <pose relative_to="__model__">0 0 0.4 0 0 0</pose>
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.09</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.38</iyy>
+            <iyz>0</iyz>
+            <izz>0.47</izz>
+          </inertia>
+        </inertial>
+        <visual name="visual">
+          <geometry><box><size>2.0 1.0 0.5</size></box></geometry>
+          <material>
+            <ambient>0.15 0.85 0.15 1</ambient>
+            <diffuse>0.15 0.85 0.15 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry><box><size>2.0 1.0 0.4</size></box></geometry>
+        </collision>
+      </link>
+
+      <link name="left_wheel">
+        <pose relative_to="chassis">-0.5 0.6 0 -1.5707 0 0</pose>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.043333</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.043333</iyy>
+            <iyz>0</iyz>
+            <izz>0.08</izz>
+          </inertia>
+        </inertial>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+          <material>
+            <ambient>0.8 0.2 0.2 1</ambient>
+            <diffuse>0.8 0.2 0.2 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+        </collision>
+      </link>
+
+      <link name="right_wheel">
+        <pose relative_to="chassis">-0.5 -0.6 0 -1.5707 0 0</pose>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.043333</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.043333</iyy>
+            <iyz>0</iyz>
+            <izz>0.08</izz>
+          </inertia>
+        </inertial>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+          <material>
+            <ambient>0.8 0.2 0.2 1</ambient>
+            <diffuse>0.8 0.2 0.2 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+        </collision>
+      </link>
+
+      <frame name="caster_frame" attached_to="chassis">
+        <pose>0.8 0 -0.2 0 0 0</pose>
+      </frame>
+
+      <link name="caster">
+        <pose relative_to="caster_frame">0 0 0 0 0 0</pose>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.016</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.016</iyy>
+            <iyz>0</iyz>
+            <izz>0.016</izz>
+          </inertia>
+        </inertial>
+        <visual name="visual">
+          <geometry><sphere><radius>0.2</radius></sphere></geometry>
+          <material>
+            <ambient>0.1 0.8 0.1 1</ambient>
+            <diffuse>0.1 0.8 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry><sphere><radius>0.2</radius></sphere></geometry>
+        </collision>
+      </link>
+
+      <joint name="left_wheel_joint" type="revolute">
+        <parent>chassis</parent>
+        <child>left_wheel</child>
+        <axis>
+          <xyz expressed_in="__model__">0 1 0</xyz>
+          <limit>
+            <lower>-1.79769e+308</lower>
+            <upper>1.79769e+308</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="right_wheel_joint" type="revolute">
+        <parent>chassis</parent>
+        <child>right_wheel</child>
+        <axis>
+          <xyz expressed_in="__model__">0 1 0</xyz>
+          <limit>
+            <lower>-1.79769e+308</lower>
+            <upper>1.79769e+308</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="caster_wheel" type="ball">
+        <parent>chassis</parent>
+        <child>caster</child>
+      </joint>
+
+      <plugin filename="gz-sim-diff-drive-system"
+              name="gz::sim::systems::DiffDrive">
+        <left_joint>left_wheel_joint</left_joint>
+        <right_joint>right_wheel_joint</right_joint>
+        <wheel_separation>1.2</wheel_separation>
+        <wheel_radius>0.4</wheel_radius>
+        <odom_publish_frequency>10</odom_publish_frequency>
+        <topic>/traffic_bot_1/cmd_vel</topic>
+        <odom_topic>/traffic_bot_1/odom</odom_topic>
+        <frame_id>traffic_bot_1/odom</frame_id>
+        <child_frame_id>traffic_bot_1/chassis</child_frame_id>
+      </plugin>
+    </model>
+
+    <!-- Dynamic traffic robot 2 -->
+    <model name="traffic_bot_2" canonical_link="chassis">
+      <pose>12 -2 0 0 0 3.14159</pose>
+
+      <link name="chassis">
+        <pose relative_to="__model__">0 0 0.4 0 0 0</pose>
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.09</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.38</iyy>
+            <iyz>0</iyz>
+            <izz>0.47</izz>
+          </inertia>
+        </inertial>
+        <visual name="visual">
+          <geometry><box><size>2.0 1.0 0.5</size></box></geometry>
+          <material>
+            <ambient>0.15 0.45 0.95 1</ambient>
+            <diffuse>0.15 0.45 0.95 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry><box><size>2.0 1.0 0.4</size></box></geometry>
+        </collision>
+      </link>
+
+      <link name="left_wheel">
+        <pose relative_to="chassis">-0.5 0.6 0 -1.5707 0 0</pose>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.043333</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.043333</iyy>
+            <iyz>0</iyz>
+            <izz>0.08</izz>
+          </inertia>
+        </inertial>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+          <material>
+            <ambient>0.9 0.6 0.1 1</ambient>
+            <diffuse>0.9 0.6 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+        </collision>
+      </link>
+
+      <link name="right_wheel">
+        <pose relative_to="chassis">-0.5 -0.6 0 -1.5707 0 0</pose>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.043333</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.043333</iyy>
+            <iyz>0</iyz>
+            <izz>0.08</izz>
+          </inertia>
+        </inertial>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+          <material>
+            <ambient>0.9 0.6 0.1 1</ambient>
+            <diffuse>0.9 0.6 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry><cylinder><radius>0.4</radius><length>0.2</length></cylinder></geometry>
+        </collision>
+      </link>
+
+      <frame name="caster_frame" attached_to="chassis">
+        <pose>0.8 0 -0.2 0 0 0</pose>
+      </frame>
+
+      <link name="caster">
+        <pose relative_to="caster_frame">0 0 0 0 0 0</pose>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.016</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.016</iyy>
+            <iyz>0</iyz>
+            <izz>0.016</izz>
+          </inertia>
+        </inertial>
+        <visual name="visual">
+          <geometry><sphere><radius>0.2</radius></sphere></geometry>
+          <material>
+            <ambient>0.1 0.5 0.9 1</ambient>
+            <diffuse>0.1 0.5 0.9 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry><sphere><radius>0.2</radius></sphere></geometry>
+        </collision>
+      </link>
+
+      <joint name="left_wheel_joint" type="revolute">
+        <parent>chassis</parent>
+        <child>left_wheel</child>
+        <axis>
+          <xyz expressed_in="__model__">0 1 0</xyz>
+          <limit>
+            <lower>-1.79769e+308</lower>
+            <upper>1.79769e+308</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="right_wheel_joint" type="revolute">
+        <parent>chassis</parent>
+        <child>right_wheel</child>
+        <axis>
+          <xyz expressed_in="__model__">0 1 0</xyz>
+          <limit>
+            <lower>-1.79769e+308</lower>
+            <upper>1.79769e+308</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="caster_wheel" type="ball">
+        <parent>chassis</parent>
+        <child>caster</child>
+      </joint>
+
+      <plugin filename="gz-sim-diff-drive-system"
+              name="gz::sim::systems::DiffDrive">
+        <left_joint>left_wheel_joint</left_joint>
+        <right_joint>right_wheel_joint</right_joint>
+        <wheel_separation>1.2</wheel_separation>
+        <wheel_radius>0.4</wheel_radius>
+        <odom_publish_frequency>10</odom_publish_frequency>
+        <topic>/traffic_bot_2/cmd_vel</topic>
+        <odom_topic>/traffic_bot_2/odom</odom_topic>
+        <frame_id>traffic_bot_2/odom</frame_id>
+        <child_frame_id>traffic_bot_2/chassis</child_frame_id>
+      </plugin>
+    </model>
 <!-- ========== LABEL SIGNS ========== -->
 
 <model name="label_pharmacy">
@@ -707,7 +1009,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_pharmacy.png</albedo_map>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_pharmacy.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -726,7 +1028,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_firefighting_center.png</albedo_map>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_firefighting_center.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -745,7 +1047,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_supermarket.png</albedo_map>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_supermarket.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -764,7 +1066,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_restaurant.png</albedo_map>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_restaurant.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -784,7 +1086,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_1.png</albedo_map>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_1.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -803,7 +1105,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_2.png</albedo_map>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_2.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -822,7 +1124,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_3.png</albedo_map>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_3.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -841,7 +1143,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_4.png</albedo_map>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_4.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -860,7 +1162,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_5.png</albedo_map>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_5.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -879,7 +1181,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_docking_station.png</albedo_map>
+            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_docking_station.png</albedo_map>
           </metal>
         </pbr>
       </material>

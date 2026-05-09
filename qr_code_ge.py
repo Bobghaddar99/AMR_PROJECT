@@ -6,20 +6,24 @@ output_dir = "qr_codes"
 os.makedirs(output_dir, exist_ok=True)
 
 landmarks = [
-    "pharmacy",
-    "fire_center",
-    "supermarket",
-    "restaurant",
-    "house_1",
-    "house_2",
-    "house_3",
-    "house_4",
-    "house_5",
+    # "pharmacy",
+    # "fire_center",
+    # "supermarket",
+    # "restaurant",
+    # "house_1",
+    # "house_2",
+    # "house_3",
+    # "house_4",
+    # "house_5",
     "docking_station"
 ]
 
+custom_payload = {
+    "docking_station": "dock",
+}
+
 for name in landmarks:
-    data = f"type:{name}"
+    data = custom_payload.get(name, f"type:{name}")
 
     qr = qrcode.QRCode(
         version=2,
