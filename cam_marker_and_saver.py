@@ -28,7 +28,7 @@ class QRLandmarkSaver(Node):
         self.map_frame = 'map'
         self.robot_frame = 'vehicle_blue/chassis'
 
-        self.json_path = os.path.expanduser('~/qr_landmarks.json')
+        self.json_path = os.path.expanduser('/home/ibrahim/Desktop/AMR_project/qr_landmarks.json')
 
         self.landmarks = self.load_existing_landmarks()
 
