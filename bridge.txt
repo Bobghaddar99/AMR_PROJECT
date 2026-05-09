@@ -6,6 +6,8 @@ ros2 run ros_gz_bridge parameter_bridge \
   /front_cam/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo
 
 
+
+
 ros2 launch slam_toolbox online_async_launch.py   use_sim_time:=true   slam_params_file:=slam.yaml
 
 
@@ -19,7 +21,7 @@ ros2 run ros_gz_bridge parameter_bridge \
 
 ros2 launch nav2_bringup navigation_launch.py use_sim_time:=True params_file:=nav_y.yaml
 
-
+ros2 launch nav2_bringup rviz_launch.py
 
 
  ros2 launch nav2_bringup localization_launch.py   map:=my_maze.yaml   params_file:=nav_y.yaml 
@@ -42,10 +44,27 @@ ros2 run ros_gz_bridge parameter_bridge \
 /clock@rosgraph_msgs/msg/Clock@gz.msgs.Clock
 
 
-ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 vehicle_blue/chassis vehicle_blue/chassis/gpu_lidar
+ros2 run tf2_ros static_transform_publisher 0 0 0.5 0 0 0 vehicle_blue/chassis vehicle_blue/chassis/gpu_lidar
 
 
 ros2 launch nav2_bringup localization_launch.py \
   map:=/home/ibrahim/Desktop/Exam_3/my_map.yaml \
   params_file:=/home/ibrahim/Desktop/Exam_3/nav2_params.yaml \
   use_sim_time:=true
+
+
+# Combined bridge for Town_and_robot.sdf
+ros2 run ros_gz_bridge parameter_bridge \
+  /clock@rosgraph_msgs/msg/Clock@gz.msgs.Clock \
+  /cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist \
+  /odom@nav_msgs/msg/Odometry@gz.msgs.Odometry \
+  /model/vehicle_blue/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V \
+  /world/town_qr_world/model/vehicle_blue/joint_state@sensor_msgs/msg/JointState@gz.msgs.Model \
+  /scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan \
+  /scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked \
+  /imu@sensor_msgs/msg/Imu@gz.msgs.IMU \
+  /front_cam/image@sensor_msgs/msg/Image@gz.msgs.Image \
+  /front_cam/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo \
+  --ros-args \
+  -r /model/vehicle_blue/tf:=/tf \
+  -r /world/town_qr_world/model/vehicle_blue/joint_state:=/joint_states

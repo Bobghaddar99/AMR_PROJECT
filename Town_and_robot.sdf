@@ -21,18 +21,6 @@
     
     <plugin filename="gz-sim-imu-system"
             name="gz::sim::systems::Imu"/>
-<plugin
-  filename="gz-sim-pose-publisher-system"
-  name="gz::sim::systems::PosePublisher">
-
-  <publish_link_pose>true</publish_link_pose>
-  <publish_sensor_pose>true</publish_sensor_pose>
-  <publish_nested_model_pose>true</publish_nested_model_pose>
-
-  <!-- CRITICAL -->
-  <use_pose_vector_msg>false</use_pose_vector_msg>
-
-</plugin>
     <light name="sun" type="directional">
       <pose>0 0 10 0 0 0</pose>
       <diffuse>1 1 1 1</diffuse>
@@ -61,6 +49,75 @@
           <material>
             <ambient>0.45 0.45 0.45 1</ambient>
             <diffuse>0.45 0.45 0.45 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Boundary walls -->
+    <model name="north_wall">
+      <static>true</static>
+      <pose>0 18.5 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>63 0.4 2.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>63 0.4 2.5</size></box></geometry>
+          <material>
+            <ambient>0.35 0.35 0.35 1</ambient>
+            <diffuse>0.35 0.35 0.35 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_wall">
+      <static>true</static>
+      <pose>0 -18.5 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>63 0.4 2.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>63 0.4 2.5</size></box></geometry>
+          <material>
+            <ambient>0.35 0.35 0.35 1</ambient>
+            <diffuse>0.35 0.35 0.35 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="east_wall">
+      <static>true</static>
+      <pose>31.5 0 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.4 37 2.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.4 37 2.5</size></box></geometry>
+          <material>
+            <ambient>0.35 0.35 0.35 1</ambient>
+            <diffuse>0.35 0.35 0.35 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="west_wall">
+      <static>true</static>
+      <pose>-31.5 0 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.4 37 2.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.4 37 2.5</size></box></geometry>
+          <material>
+            <ambient>0.35 0.35 0.35 1</ambient>
+            <diffuse>0.35 0.35 0.35 1</diffuse>
           </material>
         </visual>
       </link>
@@ -247,7 +304,7 @@
 
     <model name="docking_station">
       <static>true</static>
-      <pose>0 -28 0.3 0 0 0</pose>
+      <pose>-27.5 12 0.3 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry><box><size>5 3 0.6</size></box></geometry>
@@ -272,7 +329,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/pharmacy.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/pharmacy.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -287,7 +344,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/fire_center.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/fire_center.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -302,7 +359,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/supermarket.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/supermarket.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -317,7 +374,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/restaurant.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/restaurant.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -332,7 +389,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_1.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_1.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -347,7 +404,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_2.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_2.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -362,7 +419,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_3.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_3.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -377,7 +434,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_4.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_4.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -392,7 +449,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_5.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_5.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -400,14 +457,14 @@
 
     <model name="qr_docking_station">
       <static>true</static>
-      <pose>0 -26.2 1.0 0 0 3.14159</pose>
+      <pose>-27.5 8.9 1.0 0 0 0</pose>
       <link name="link">
         <visual name="qr_visual">
           <geometry><box><size>1.2 0.05 1.2</size></box></geometry>
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/docking_station.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/docking_station.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -451,7 +508,7 @@
           <pose>0 0 0.5 0 0 0</pose>
           <topic>scan</topic>
 
-          <update_rate>10</update_rate>
+          <update_rate>30</update_rate>
           <ray>                          
           <scan>
           <horizontal>
@@ -469,7 +526,7 @@
         </scan>
           <range>
           <min>0.1</min>               <!-- ← was 0.08, must be ≥ 0.1 for OGRE -->
-          <max>10.0</max>
+          <max>12.0</max>
           <resolution>0.01</resolution>
           </range>
         </ray>
@@ -615,6 +672,13 @@
       </joint>
 
 
+      <plugin filename="gz-sim-pose-publisher-system"
+              name="gz::sim::systems::PosePublisher">
+        <publish_link_pose>true</publish_link_pose>
+        <publish_sensor_pose>true</publish_sensor_pose>
+        <publish_nested_model_pose>true</publish_nested_model_pose>
+        <use_pose_vector_msg>false</use_pose_vector_msg>
+      </plugin>
 
       <plugin filename="gz-sim-diff-drive-system"
               name="gz::sim::systems::DiffDrive">
@@ -643,7 +707,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_pharmacy.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_pharmacy.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -662,7 +726,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_firefighting_center.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_firefighting_center.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -681,7 +745,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_supermarket.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_supermarket.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -700,7 +764,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_restaurant.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_restaurant.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -720,7 +784,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_1.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_1.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -739,7 +803,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_2.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_2.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -758,7 +822,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_3.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_3.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -777,7 +841,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_4.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_4.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -796,7 +860,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_5.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_5.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -806,7 +870,7 @@
 
 <model name="label_docking_station">
   <static>true</static>
-  <pose>0 -28 1.5 0 0 0</pose>
+  <pose>-27.5 12 1.5 0 0 0</pose>
   <link name="link">
     <visual name="visual">
       <geometry><box><size>1.8 0.05 0.8</size></box></geometry>
@@ -815,7 +879,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_docking_station.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_docking_station.png</albedo_map>
           </metal>
         </pbr>
       </material>
