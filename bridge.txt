@@ -75,5 +75,10 @@ ros2 run ros_gz_bridge parameter_bridge \
   -r /model/vehicle_blue/tf:=/tf \
   -r /world/town_qr_world/model/vehicle_blue/joint_state:=/joint_states
 
-# Back-and-forth traffic robots controller
-python3 /home/ibrahim/Desktop/AMR_project/traffic_robots_controller.py
+# Back-and-forth traffic robots controller (timed: 1min move -> 180° rotate -> 1min move)
+python3 /home/ibrahim/Desktop/AMR_project/traffic_robots_timed.py
+
+# Traffic robots odometry bridges
+ros2 run ros_gz_bridge parameter_bridge \
+  /traffic_bot_1/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry \
+  /traffic_bot_2/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry

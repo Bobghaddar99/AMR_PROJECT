@@ -11,7 +11,10 @@ import re
 import threading
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable
+from typing import Callable, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import Any
 
 import rclpy
 from action_msgs.msg import GoalStatus
@@ -394,6 +397,9 @@ class MissionGUI:
         self.mission_var = tk.StringVar(value=list(MISSION_DEFINITIONS.keys())[0])
         self.house_var = tk.StringVar(value="house_1")
         self.route_var = tk.StringVar(value="")
+        self.use_custom_var = tk.BooleanVar(value=False)
+        self.custom_mission_name_var = tk.StringVar(value="")
+        self.custom_destination_var = tk.StringVar(value="")
 
         self._build_layout()
         self._refresh_route_preview()
@@ -406,7 +412,7 @@ class MissionGUI:
 
         title = ttk.Label(
             main,
-            text="Project Part 2: Autonomous Mission Execution",
+            text="Project ",
             font=("TkDefaultFont", 13, "bold"),
         )
         title.pack(anchor="w")
@@ -443,6 +449,58 @@ class MissionGUI:
         self.house_box.grid(row=1, column=1, sticky="w", pady=6)
         self.house_box.bind("<<ComboboxSelected>>", lambda _: self._refresh_route_preview())
 
+        # Custom mission section
+        separator = ttk.Separator(main, orient="horizontal")
+        separator.pack(fill="x", pady=(12, 12))
+
+        custom_label = ttk.Label(
+            main,
+            text="Custom Mission",
+            font=("TkDefaultFont", 10, "bold"),
+        )
+        custom_label.pack(anchor="w")
+
+        custom_frame = ttk.Frame(main)
+        custom_frame.pack(fill="x", pady=(6, 10))
+
+        self.custom_check = ttk.Checkbutton(
+            custom_frame,
+            text="Use Custom Mission",
+            variable=self.use_custom_var,
+            command=self._on_custom_mission_toggled,
+        )
+        self.custom_check.pack(anchor="w")
+
+        custom_form = ttk.Frame(main)
+        custom_form.pack(fill="x")
+
+        ttk.Label(custom_form, text="Mission name:").grid(row=0, column=0, sticky="w", padx=(0, 10), pady=6)
+        self.custom_mission_entry = ttk.Entry(
+            custom_form,
+            textvariable=self.custom_mission_name_var,
+            width=24,
+            state="disabled",
+        )
+        self.custom_mission_entry.grid(row=0, column=1, sticky="w", pady=6)
+        self.custom_mission_entry.bind("<KeyRelease>", lambda _: self._refresh_route_preview())
+
+        ttk.Label(custom_form, text="Destination(s):").grid(row=1, column=0, sticky="w", padx=(0, 10), pady=6)
+        self.custom_destination_entry = ttk.Entry(
+            custom_form,
+            textvariable=self.custom_destination_var,
+            width=24,
+            state="disabled",
+        )
+        self.custom_destination_entry.grid(row=1, column=1, sticky="w", pady=6)
+        self.custom_destination_entry.bind("<KeyRelease>", lambda _: self._refresh_route_preview())
+
+        hint = ttk.Label(
+            main,
+            text="(Enter comma-separated location names for multiple destinations, e.g., 'supermarket, pharmacy, restaurant')",
+            font=("TkDefaultFont", 8),
+        )
+        hint.pack(anchor="w", pady=(0, 10))
+
         controls = ttk.Frame(main)
         controls.pack(fill="x", pady=(10, 8))
 
@@ -458,12 +516,34 @@ class MissionGUI:
         self.log_text = ScrolledText(main, height=16, wrap="word", state="disabled")
         self.log_text.pack(fill="both", expand=True)
 
+    def _on_custom_mission_toggled(self) -> None:
+        state = "normal" if self.use_custom_var.get() else "disabled"
+        self.custom_mission_entry.configure(state=state)
+        self.custom_destination_entry.configure(state=state)
+        self.mission_box.configure(state="disabled" if self.use_custom_var.get() else "readonly")
+        self.house_box.configure(state="disabled" if self.use_custom_var.get() else "readonly")
+        self._refresh_route_preview()
+
     def _refresh_route_preview(self) -> None:
-        mission = self.mission_var.get()
-        house = normalize_location_name(self.house_var.get())
-        route = self.controller.build_mission_route(mission, house)
-        rendered = " -> ".join(display_name(point) for point in route)
-        self.route_var.set(f"Route: {rendered}")
+        if self.use_custom_var.get():
+            mission_name = self.custom_mission_name_var.get().strip()
+            destinations_str = self.custom_destination_var.get().strip()
+            if mission_name and destinations_str:
+                destinations = [d.strip() for d in destinations_str.split(",") if d.strip()]
+                if destinations:
+                    route = ["docking_station"] + [normalize_location_name(d) for d in destinations] + ["docking_station"]
+                    rendered = " -> ".join(display_name(point) for point in route)
+                    self.route_var.set(f"Route: {rendered}")
+                else:
+                    self.route_var.set("Route: (enter at least one destination)")
+            else:
+                self.route_var.set("Route: (enter mission name and destination(s))")
+        else:
+            mission = self.mission_var.get()
+            house = normalize_location_name(self.house_var.get())
+            route = self.controller.build_mission_route(mission, house)
+            rendered = " -> ".join(display_name(point) for point in route)
+            self.route_var.set(f"Route: {rendered}")
 
     def _start_log_pump(self) -> None:
         self.root.after(100, self._pump_log_queue)
@@ -508,16 +588,34 @@ class MissionGUI:
             messagebox.showwarning("Mission Busy", "A mission is already running.")
             return
 
-        mission_name = self.mission_var.get()
-        house_name = normalize_location_name(self.house_var.get())
-        self._refresh_route_preview()
+        if self.use_custom_var.get():
+            mission_name = self.custom_mission_name_var.get().strip()
+            destinations_str = self.custom_destination_var.get().strip()
+            if not mission_name:
+                messagebox.showerror("Invalid Mission", "Please enter a mission name.")
+                return
+            if not destinations_str:
+                messagebox.showerror("Invalid Mission", "Please enter at least one destination.")
+                return
+            destinations = [d.strip() for d in destinations_str.split(",") if d.strip()]
+            if not destinations:
+                messagebox.showerror("Invalid Mission", "Please enter at least one valid destination.")
+                return
+        else:
+            mission_name = self.mission_var.get()
+            destination = normalize_location_name(self.house_var.get())
+            destinations = [destination]
 
+        self._refresh_route_preview()
         self.start_btn.configure(state="disabled")
         self.reload_btn.configure(state="disabled")
 
         def worker() -> None:
             try:
-                self.controller.execute_mission(mission_name, house_name, self.log)
+                if self.use_custom_var.get():
+                    self._execute_custom_mission(mission_name, destinations, self.log)
+                else:
+                    self.controller.execute_mission(mission_name, destination, self.log)
             except MissionError as exc:
                 self.log(f"[ERROR] {exc}")
                 self._safe_after(lambda: messagebox.showerror("Mission Failed", str(exc)))
@@ -527,13 +625,56 @@ class MissionGUI:
             finally:
                 self._safe_after(self._finish_mission_ui)
 
-        self.log(f"Queued mission: {mission_name} to {display_name(house_name)}")
+        if self.use_custom_var.get():
+            destinations_display = ", ".join(display_name(d) for d in destinations)
+            self.log(f"Queued custom mission: {mission_name} to {destinations_display}")
+        else:
+            self.log(f"Queued mission: {mission_name} to {display_name(destination)}")
         self.worker_thread = threading.Thread(target=worker, daemon=True)
         self.worker_thread.start()
+
+    def _execute_custom_mission(self, mission_name: str, destinations: list[str], status_callback: Callable[[str], None]) -> None:
+        """Execute a custom mission: dock -> destinations -> dock."""
+        normalized_dests = [normalize_location_name(d) for d in destinations]
+        route = ["docking_station"] + normalized_dests + ["docking_station"]
+        
+        missing = []
+        executable_route = []
+        for location in route:
+            if location in self.controller.landmarks:
+                executable_route.append(location)
+            elif location not in missing:
+                missing.append(location)
+
+        if missing:
+            missing_display = ", ".join(display_name(name) for name in missing)
+            status_callback(f"[WARN] Missing landmarks skipped: {missing_display}")
+
+        if not executable_route:
+            available_display = ", ".join(
+                display_name(name) for name in sorted(self.controller.landmarks.keys())
+            )
+            raise MissionError(
+                "No custom mission waypoint can be executed from current landmarks. "
+                f"Available landmarks: {available_display}"
+            )
+
+        destinations_display = ", ".join(display_name(d) for d in normalized_dests)
+        status_callback(f"Custom mission started: {mission_name} to {destinations_display}")
+        for index, location in enumerate(executable_route, start=1):
+            status_callback(f"[{index}/{len(executable_route)}] Navigating to {display_name(location)}")
+            self.controller.navigate_to(location, status_callback)
+
+        if "docking_station" in executable_route:
+            status_callback("Custom mission complete.")
+        else:
+            status_callback("[WARN] Custom mission complete without docking_station.")
 
     def _finish_mission_ui(self) -> None:
         self.start_btn.configure(state="normal")
         self.reload_btn.configure(state="normal")
+        if self.use_custom_var.get():
+            self.custom_mission_entry.focus()
 
     def on_close(self) -> None:
         if self.worker_thread and self.worker_thread.is_alive():
