@@ -25,8 +25,8 @@ ros2 launch nav2_bringup rviz_launch.py use_sim_time:=true
 
 
 ros2 launch nav2_bringup localization_launch.py \
-  map:=/home/ibrahim/Desktop/AMR_project/adam_map/adam_map.yaml \
-  params_file:=/home/ibrahim/Desktop/AMR_project/nav_y.yaml \
+  map:=/home/adammanasfi/AMR_PROJECT/adam_map/adam_map.yaml \
+  params_file:=/home/adammanasfi/AMR_PROJECT/nav_y.yaml \
   use_sim_time:=true
 
 
@@ -51,8 +51,8 @@ ros2 run tf2_ros static_transform_publisher 0 0 0.5 0 0 0 vehicle_blue/chassis v
 
 
 ros2 launch nav2_bringup localization_launch.py \
-  map:=/home/ibrahim/Desktop/AMR_project/adam_map/adam_map.yaml \
-  params_file:=/home/ibrahim/Desktop/AMR_project/nav_y.yaml \
+  map:=/home/adammanasfi/AMR_PROJECT/adam_map/adam_map.yaml \
+  params_file:=/home/adammanasfi/AMR_PROJECT/nav_y.yaml \
   use_sim_time:=true
 
 
@@ -76,7 +76,7 @@ ros2 run ros_gz_bridge parameter_bridge \
   -r /world/town_qr_world/model/vehicle_blue/joint_state:=/joint_states
 
 # Back-and-forth traffic robots controller (timed: 1min move -> 180° rotate -> 1min move)
-python3 /home/ibrahim/Desktop/AMR_project/traffic_robots_timed.py
+python3 /home/adammanasfi/AMR_PROJECT/traffic_robots_timed.py
 
 # Traffic robots odometry bridges
 ros2 run ros_gz_bridge parameter_bridge \

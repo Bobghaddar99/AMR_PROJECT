@@ -25,7 +25,7 @@ class FrontierWeightedCalculator(Node):
         self.declare_parameter('size_weight', 1.0)
         self.declare_parameter('distance_weight', 0.3)
         self.declare_parameter('min_size', 3)
-        self.declare_parameter('stuck_time', 40.0)
+        self.declare_parameter('stuck_time', 3.0)
         self.declare_parameter('robot_size', 2.0)
         self.declare_parameter('map_frame', 'map')
         self.declare_parameter('base_frame', 'vehicle_blue/chassis')
@@ -91,7 +91,7 @@ class FrontierWeightedCalculator(Node):
 
         self.prev_number_count = 0
 
-        self.timer = self.create_timer(0.5, self.timer_callback)
+        self.timer = self.create_timer(5.0, self.timer_callback)
         self.initial_pose_timer = self.create_timer(1.0, self.save_initial_position_once)
 
         self.get_logger().info("Frontier weighted calculator started.")

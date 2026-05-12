@@ -329,7 +329,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/pharmacy.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/pharmacy.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -344,7 +344,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/fire_center.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/fire_center.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -359,7 +359,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/supermarket.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/supermarket.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -374,7 +374,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/restaurant.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/restaurant.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -389,7 +389,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_1.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_1.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -404,7 +404,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_2.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_2.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -419,7 +419,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_3.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_3.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -434,7 +434,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_4.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_4.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -449,7 +449,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/house_5.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/house_5.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -464,7 +464,7 @@
           <material>
             <ambient>1 1 1 1</ambient>
             <diffuse>1 1 1 1</diffuse>
-            <pbr><metal><albedo_map>file:///home/ibrahim/Desktop/AMR_project/qr_codes/docking_station.png</albedo_map></metal></pbr>
+            <pbr><metal><albedo_map>file:///home/adammanasfi/AMR_PROJECT/qr_codes/docking_station.png</albedo_map></metal></pbr>
           </material>
         </visual>
       </link>
@@ -1013,7 +1013,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_pharmacy.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_pharmacy.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -1032,7 +1032,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_firefighting_center.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_firefighting_center.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -1051,7 +1051,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_supermarket.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_supermarket.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -1070,7 +1070,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_restaurant.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_restaurant.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -1090,7 +1090,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_1.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_1.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -1109,7 +1109,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_2.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_2.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -1128,7 +1128,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_3.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_3.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -1147,7 +1147,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_4.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_4.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -1166,7 +1166,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_house_5.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_house_5.png</albedo_map>
           </metal>
         </pbr>
       </material>
@@ -1185,7 +1185,7 @@
         <diffuse>1 1 1 1</diffuse>
         <pbr>
           <metal>
-            <albedo_map>file:///home/ibrahim/Desktop/AMR_project/labels/label_docking_station.png</albedo_map>
+            <albedo_map>file:///home/adammanasfi/AMR_PROJECT/labels/label_docking_station.png</albedo_map>
           </metal>
         </pbr>
       </material>
